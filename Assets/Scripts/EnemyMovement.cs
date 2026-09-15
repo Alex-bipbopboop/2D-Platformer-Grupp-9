@@ -63,10 +63,10 @@ public class EnemyMovement : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Rigidbody2D rgbd = other.attachedRigidbody;
-
             audioSource.pitch = Random.Range(0.8f, 1.2f);
             audioSource.PlayOneShot(enemyDestroySoundEffect);
+
+            Rigidbody2D rgbd = other.attachedRigidbody;
 
             if (rgbd != null)
             {
