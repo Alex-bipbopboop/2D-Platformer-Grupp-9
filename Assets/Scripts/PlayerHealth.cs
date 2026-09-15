@@ -12,7 +12,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private AudioClip damageSoundEffect;
     private int currentHealth;
     private AudioSource audioSource;
-    private object current;
+    //private object current;
 
     void Start()
     {
@@ -74,5 +74,11 @@ public class PlayerHealth : MonoBehaviour
             currentHealth = startingHealth;
         }
         return true;
+    }
+
+    // test 
+    public void SetSpawnPosition (Transform newSpawnPosition)
+    {
+        spawnPosition = newSpawnPosition;
     }
 }
