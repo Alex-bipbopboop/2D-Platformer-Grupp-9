@@ -13067,6 +13067,7 @@ MonoBehaviour:
   move: {fileID: -3986111660498828135, guid: 7048fe8ef7a6a1e449c27eddbc518211, type: 3}
   jump: {fileID: -6657658402788899879, guid: 7048fe8ef7a6a1e449c27eddbc518211, type: 3}
   moveSpeed: 250
+  walkSoundTimerTime: 0.4
   jumpForce: 450
   leftFoot: {fileID: 1285940477}
   rightFoot: {fileID: 1739064647}
