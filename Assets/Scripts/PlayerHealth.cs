@@ -10,6 +10,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private Color normalHealthColor, criticalHealthColor;
     [SerializeField] private AudioClip pickupSoundEffect;
     [SerializeField] private AudioClip damageSoundEffect;
+    [SerializeField] private AudioClip deathSoundEffect;
     private int currentHealth;
     private AudioSource audioSource;
     private object current;
@@ -36,12 +37,13 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    private void Respawn()
+    public void Respawn()
     {
         currentHealth = startingHealth;
         UpdateHealthBar();
         transform.position = spawnPosition.position;
         GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
+        audioSource.PlayOneShot(deathSoundEffect);
     }
 
     private void UpdateHealthBar()
