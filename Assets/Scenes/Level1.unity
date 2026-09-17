@@ -13258,6 +13258,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1088
   raycastDistance: 0.25
+  whatIsIce:
+    serializedVersion: 2
+    m_Bits: 0
+  groundAcceleration: 6
+  iceAcceleration: 60
   jumpSounds:
   - {fileID: 8300000, guid: 04a479876f7f81e4bb814f25ec0a47a4, type: 3}
   - {fileID: 8300000, guid: a397e6a19a6cc4441b610251bf68422f, type: 3}
@@ -17526,7 +17531,7 @@ Transform:
   m_GameObject: {fileID: 523859117}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 69.59, y: 24.56, z: 0}
+  m_LocalPosition: {x: 69.76, y: 24.56, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
