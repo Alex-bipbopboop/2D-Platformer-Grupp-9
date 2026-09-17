@@ -12,6 +12,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform leftFoot, rightFoot;
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private float raycastDistance = 0.25f;
+    [SerializeField] private LayerMask whatIsIce;               //samma funktion som whatIsGround
+    [SerializeField] private float groundAcceleration = 6f;    //Acceleration tillagt för att kunna ändra på hastigheten som spelaren startar och stannar
+    [SerializeField] private float iceAcceleration = 60f;
     [SerializeField] private AudioClip[] jumpSounds;
     [SerializeField] private ParticleSystem jumpParticleSystem;
     bool canMove = true;
@@ -59,7 +62,14 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
-        rgbd.linearVelocity = new Vector2(moveDirection * moveSpeed * Time.deltaTime, rgbd.linearVelocity.y);
+        //rgbd.linearVelocity = new Vector2(moveDirection * moveSpeed * Time.deltaTime, rgbd.linearVelocity.y);
+
+        float targetSpeedX = moveDirection * moveSpeed;
+        float accel = CheckIsOnIce() ? iceAcceleration : groundAcceleration; //if CheckIsOnIce is true accel uses iceAcceleration else uses groundAcceleration
+
+        float newVelocityX = Mathf.MoveTowards(rgbd.linearVelocity.x, targetSpeedX, accel * Time.fixedDeltaTime);
+        rgbd.linearVelocity = new Vector2(newVelocityX, rgbd.linearVelocity.y);
+
     }
 
     private void OnDisable()
@@ -74,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump(InputAction.CallbackContext context)
     {
-        if (CheckIsGrounded() == true)
+        if (CheckIsGrounded() == true || CheckIsOnIce() == true)
         {
             rgbd.AddForce(new Vector2(0, jumpForce));
             jumpParticleSystem.Play();
@@ -97,6 +107,21 @@ public class PlayerMovement : MonoBehaviour
             return false;
         }
      
+    }
+
+    private bool CheckIsOnIce() //samma verktyg som CheckIsGrounded används för att detectera is
+    { 
+        RaycastHit2D leftHit = Physics2D.Raycast(leftFoot.position, Vector2.down, raycastDistance, whatIsIce);
+        RaycastHit2D rightHit = Physics2D.Raycast(rightFoot.position, Vector2.down, raycastDistance, whatIsIce);
+        
+        if (leftHit.collider != null && leftHit || rightHit.collider != null && rightHit)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public void TakeKnockback(float backForce, float upwardsForce)
