@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
@@ -8,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private float moveDirection;
 
     [SerializeField] private float moveSpeed = 1f;
+    [SerializeField] private float walkSoundTimerTime = 0.4f;
     [SerializeField] private float jumpForce = 200f;
     [SerializeField] private Transform leftFoot, rightFoot;
     [SerializeField] private LayerMask whatIsGround;
@@ -16,8 +19,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float groundAcceleration = 6f;    //Acceleration tillagt för att kunna ändra på hastigheten som spelaren startar och stannar
     [SerializeField] private float iceAcceleration = 60f;
     [SerializeField] private AudioClip[] jumpSounds;
+    [SerializeField] private AudioClip walkSound;
     [SerializeField] private ParticleSystem jumpParticleSystem;
     bool canMove = true;
+    bool walkSoundTimer = false;
+    private float playerPositionX;
+    private float newPlayerPositionX;
 
     private AudioSource audioSource;
     private Rigidbody2D rgbd;
@@ -30,8 +37,8 @@ public class PlayerMovement : MonoBehaviour
         rgbd = GetComponent<Rigidbody2D>();
         rend = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-        audioSource = GetComponent<AudioSource>();
-
+        audioSource = GetComponent<AudioSource>(); 
+        playerPositionX = transform.position.x;
 
         jump.action.started += Jump;
     }
@@ -39,6 +46,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        newPlayerPositionX = transform.position.x;
+
         moveDirection = move.action.ReadValue<float>();
 
         anim.SetFloat("MoveSpeed", Mathf.Abs(rgbd.linearVelocity.x));
@@ -48,12 +57,19 @@ public class PlayerMovement : MonoBehaviour
         if (moveDirection < 0f)
         {
             FlipSprite(true);
+
         }
 
         if (moveDirection > 0f)
         {
             FlipSprite(false);
         }
+
+        while (anim.GetCurrentAnimatorStateInfo(0).IsName("PlayerRun") && !walkSoundTimer)
+        {
+            StartCoroutine(WalkSoundTimer());
+        }
+        playerPositionX = newPlayerPositionX;
     }
 
     private void FixedUpdate()
@@ -134,6 +150,15 @@ public class PlayerMovement : MonoBehaviour
     private void CanMoveAgain()
     {
         canMove = true;
+    }
+
+    private IEnumerator WalkSoundTimer()
+    {
+        walkSoundTimer = true;
+        audioSource.pitch = Random.Range(0.8f, 1.2f);
+        audioSource.PlayOneShot(walkSound);
+        yield return new WaitForSeconds(walkSoundTimerTime);
+        walkSoundTimer = false;
     }
 
 }

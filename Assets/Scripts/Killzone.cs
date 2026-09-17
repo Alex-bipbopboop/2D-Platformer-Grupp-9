@@ -7,15 +7,7 @@ public class Killzone : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-           // other.transform.position = spawnPosition.position;
-            //other.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
-
-            PlayerHealth health = other.GetComponent<PlayerHealth>();
-
-            if (health != null )
-            {
-                health.TakeDamage(999);
-            }
+            other.gameObject.GetComponent<PlayerHealth>().Respawn();
         }
     }
 }
