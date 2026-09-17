@@ -5,18 +5,16 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float moveSpeed = 2.5f;
     [SerializeField] private float bounciness = 100f;
     [SerializeField] private int damageGiven = 1;
-    [SerializeField] private AudioClip enemyDestroySoundEffect;
+    [SerializeField] private GameObject enemyPoof;
 
     //Knockback
     [SerializeField] private float knockbackForce = 100f;
     [SerializeField] private float upwardForce = 5f;
     private SpriteRenderer rend;
-    private AudioSource audioSource;
 
     private void Start()
     {
         rend = GetComponent<SpriteRenderer>();
-        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -65,13 +63,11 @@ public class EnemyMovement : MonoBehaviour
         {
             Rigidbody2D rgbd = other.attachedRigidbody;
 
-            audioSource.pitch = Random.Range(0.8f, 1.2f);
-            audioSource.PlayOneShot(enemyDestroySoundEffect);
-
             if (rgbd != null)
             {
                 rgbd.linearVelocity = new Vector2(rgbd.linearVelocityX, 0);
                 rgbd.AddForce(new Vector2(0, bounciness));
+                Instantiate(enemyPoof, transform.position, Quaternion.identity);
             }
             
             Destroy(gameObject);
