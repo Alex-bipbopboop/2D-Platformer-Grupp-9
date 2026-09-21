@@ -16,8 +16,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private float raycastDistance = 0.25f;
     [SerializeField] private LayerMask whatIsIce;               //samma funktion som whatIsGround
-    [SerializeField] private float groundAcceleration = 6f;    //Acceleration tillagt för att kunna ändra på hastigheten som spelaren startar och stannar
-    [SerializeField] private float iceAcceleration = 60f;
+    [SerializeField] private float groundAcceleration = 60f;    //Acceleration tillagt för att kunna ändra på hastigheten som spelaren startar och stannar
+    [SerializeField] private float iceAcceleration = 6f;
     [SerializeField] private AudioClip[] jumpSounds;
     [SerializeField] private AudioClip walkSound;
     [SerializeField] private ParticleSystem jumpParticleSystem;
@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     bool walkSoundTimer = false;
     private float playerPositionX;
     private float newPlayerPositionX;
+    private float currentAccel;
 
     private AudioSource audioSource;
     private Rigidbody2D rgbd;
@@ -39,6 +40,8 @@ public class PlayerMovement : MonoBehaviour
         anim = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>(); 
         playerPositionX = transform.position.x;
+
+        currentAccel = groundAcceleration;
 
         jump.action.started += Jump;
     }
@@ -80,10 +83,18 @@ public class PlayerMovement : MonoBehaviour
         }
         //rgbd.linearVelocity = new Vector2(moveDirection * moveSpeed * Time.deltaTime, rgbd.linearVelocity.y);
 
-        float targetSpeedX = moveDirection * moveSpeed;
-        float accel = CheckIsOnIce() ? iceAcceleration : groundAcceleration; //if CheckIsOnIce is true accel uses iceAcceleration else uses groundAcceleration
+        bool grounded = CheckIsGrounded();
+        if (grounded)
+        {
+            currentAccel = CheckIsOnIce() ? iceAcceleration : groundAcceleration;
+        }
 
-        float newVelocityX = Mathf.MoveTowards(rgbd.linearVelocity.x, targetSpeedX, accel * Time.fixedDeltaTime);
+
+        float targetSpeedX = moveDirection * moveSpeed;
+
+        //float accel = CheckIsOnIce() ? iceAcceleration : groundAcceleration; //if CheckIsOnIce is true accel uses iceAcceleration else uses groundAcceleration
+
+        float newVelocityX = Mathf.MoveTowards(rgbd.linearVelocity.x, targetSpeedX, currentAccel * Time.fixedDeltaTime);
         rgbd.linearVelocity = new Vector2(newVelocityX, rgbd.linearVelocity.y);
 
     }
