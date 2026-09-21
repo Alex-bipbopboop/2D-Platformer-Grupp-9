@@ -12562,6 +12562,7 @@ MonoBehaviour:
   pickupSoundEffect: {fileID: 8300000, guid: e042bf2d7dadc5c43ba732c219862918, type: 3}
   damageSoundEffect: {fileID: 8300000, guid: 3296683571d4d5d4089f2a1deaffc200, type: 3}
   deathSoundEffect: {fileID: 8300000, guid: cce3b5a2a0af68b4f84eb2b7927bab89, type: 3}
+  didRespawn: 0
 --- !u!114 &419944566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16083,7 +16084,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 742a8a2010c5ca64db6bf425643109cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Killzone
-  spawnPosition: {fileID: 2076272876}
 --- !u!1 &511773420
 GameObject:
   m_ObjectHideFlags: 0
@@ -45657,9 +45657,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1309547756}
+  - component: {fileID: 1309547757}
   m_Layer: 0
   m_Name: --[ENEMY]--
-  m_TagString: Untagged
+  m_TagString: EnemyNest
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45684,6 +45685,18 @@ Transform:
   - {fileID: 1622811056}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1309547757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309547755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dbf3824672c37747bec84bbc9414eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy
 --- !u!1 &1309632282
 GameObject:
   m_ObjectHideFlags: 0

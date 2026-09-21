@@ -11,10 +11,13 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float knockbackForce = 100f;
     [SerializeField] private float upwardForce = 5f;
     private SpriteRenderer rend;
+    private int enemyLayerDefeated;
+    public PlayerHealth playerHealth;
 
     private void Start()
     {
         rend = GetComponent<SpriteRenderer>();
+        enemyLayerDefeated = LayerMask.NameToLayer("EnemyDefeated");
     }
 
     private void Update()
@@ -26,6 +29,11 @@ public class EnemyMovement : MonoBehaviour
         if (moveSpeed > 0)
         {
             rend.flipX = false;
+        }
+
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().didRespawn == true)
+        {
+            GameObject.FindGameObjectWithTag("EnemyNest").GetComponent<Enemy>().EnemyRespawn();
         }
     }
 
@@ -69,8 +77,10 @@ public class EnemyMovement : MonoBehaviour
                 rgbd.AddForce(new Vector2(0, bounciness));
                 Instantiate(enemyPoof, transform.position, Quaternion.identity);
             }
-            
-            Destroy(gameObject);
+
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            gameObject.GetComponent<AudioSource>().enabled = false;
+            gameObject.layer = enemyLayerDefeated;
         }
     }
 }

@@ -1,3 +1,4 @@
+using Unity.SmartStrings.PersistentVariables;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +14,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private AudioClip deathSoundEffect;
     private int currentHealth;
     private AudioSource audioSource;
+    public bool didRespawn;
     //private object current;
 
     void Start()
@@ -44,6 +46,9 @@ public class PlayerHealth : MonoBehaviour
         transform.position = spawnPosition.position;
         GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
         audioSource.PlayOneShot(deathSoundEffect);
+        print("didRespawn true");
+        didRespawn = true;
+
     }
 
     private void UpdateHealthBar()

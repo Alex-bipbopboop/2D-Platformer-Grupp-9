@@ -138,6 +138,7 @@ MonoBehaviour:
   enemyPoof: {fileID: 6026885795544260463, guid: 74a779fcf7d43d1489275e27e56033eb, type: 3}
   knockbackForce: 400
   upwardForce: 180
+  playerHealth: {fileID: 0}
 --- !u!50 &5497057229942054384
 Rigidbody2D:
   serializedVersion: 5
