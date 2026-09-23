@@ -8,6 +8,7 @@ public class EnemyMovementFlying : MonoBehaviour
     [SerializeField] private GameObject enemyPoof;
     private GameObject waypoint;
     [SerializeField] private float distanceToAttack;
+    private GameObject player;
     private Vector2 moveToPosition;
     private float distanceToPlayer;
     public Vector2 spawnPosition;
@@ -25,6 +26,7 @@ public class EnemyMovementFlying : MonoBehaviour
         enemyLayerDefeated = LayerMask.NameToLayer("EnemyDefeated");
         waypoint = GameObject.FindGameObjectWithTag("EnemyMoveToPosition");
         spawnPosition = gameObject.transform.position;
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update()
@@ -32,16 +34,16 @@ public class EnemyMovementFlying : MonoBehaviour
         moveToPosition = new Vector2(waypoint.transform.position.x, waypoint.transform.position.y);
         distanceToPlayer = Vector2.Distance(transform.position, moveToPosition);
 
-        if (moveSpeed < 0)
+        if (player.transform.position.x > gameObject.transform.position.x)
         {
             rend.flipX = true;
         }
-        if (moveSpeed > 0)
+        if (player.transform.position.x < gameObject.transform.position.x)
         {
             rend.flipX = false;
         }
 
-        if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().didRespawn == true)
+        if (player.GetComponent<PlayerHealth>().didRespawn == true)
         {
             GameObject.FindGameObjectWithTag("EnemyNest").GetComponent<Enemy>().EnemyRespawn();
         }
