@@ -7,6 +7,8 @@ TagManager:
   - EnemyBlock
   - Enemy
   - EnemyNest
+  - EnemyMoveToPosition
+  - EnemyFlying
   layers:
   - Default
   - TransparentFX
@@ -21,7 +23,7 @@ TagManager:
   - Platform
   - Ice
   - EnemyDefeated
-  - 
+  - EnemyFlying
   - 
   - 
   - 
