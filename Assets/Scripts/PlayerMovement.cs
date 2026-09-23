@@ -21,6 +21,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private AudioClip[] jumpSounds;
     [SerializeField] private AudioClip walkSound;
     [SerializeField] private ParticleSystem jumpParticleSystem;
+    [SerializeField] private float playerPositionUpdateTimer;
+    [SerializeField] private GameObject lastPLayerPosition;
+    [SerializeField] private GameObject newPlayerPosition;
+    private bool playerPositionUpdateTimerReset = true;
     bool canMove = true;
     bool walkSoundTimer = false;
     private float playerPositionX;
@@ -73,6 +77,11 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(WalkSoundTimer());
         }
         playerPositionX = newPlayerPositionX;
+
+        if (playerPositionUpdateTimerReset == true)
+        {
+            StartCoroutine(PlayerPosition());
+        }
     }
 
     private void FixedUpdate()
@@ -170,6 +179,15 @@ public class PlayerMovement : MonoBehaviour
         audioSource.PlayOneShot(walkSound);
         yield return new WaitForSeconds(walkSoundTimerTime);
         walkSoundTimer = false;
+    }
+
+    private IEnumerator PlayerPosition()
+    {
+        playerPositionUpdateTimerReset = false;
+        newPlayerPosition.transform.position = gameObject.transform.position;
+        yield return new WaitForSeconds(playerPositionUpdateTimer);
+        lastPLayerPosition.transform.position = newPlayerPosition.transform.position;
+        playerPositionUpdateTimerReset = true;
     }
 
 }

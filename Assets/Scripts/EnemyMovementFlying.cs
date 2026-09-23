@@ -1,11 +1,15 @@
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
+public class EnemyMovementFlying : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 2.5f;
     [SerializeField] private float bounciness = 100f;
     [SerializeField] private int damageGiven = 1;
     [SerializeField] private GameObject enemyPoof;
+    private GameObject waypoint;
+    [SerializeField] private float distanceToAttack;
+    private Vector2 moveToPosition;
+    private float distanceToPlayer;
     public Vector2 spawnPosition;
 
     //Knockback
@@ -19,11 +23,15 @@ public class EnemyMovement : MonoBehaviour
     {
         rend = GetComponent<SpriteRenderer>();
         enemyLayerDefeated = LayerMask.NameToLayer("EnemyDefeated");
+        waypoint = GameObject.FindGameObjectWithTag("EnemyMoveToPosition");
         spawnPosition = gameObject.transform.position;
     }
 
     private void Update()
     {
+        moveToPosition = new Vector2(waypoint.transform.position.x, waypoint.transform.position.y);
+        distanceToPlayer = Vector2.Distance(transform.position, moveToPosition);
+
         if (moveSpeed < 0)
         {
             rend.flipX = true;
@@ -42,21 +50,20 @@ public class EnemyMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.Translate(new Vector2(moveSpeed, 0) * Time.deltaTime);
+        if (distanceToPlayer <= distanceToAttack)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, moveToPosition, moveSpeed * Time.deltaTime);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("EnemyBlock") || other.gameObject.CompareTag("Enemy"))
-        {
-            moveSpeed = -moveSpeed;
-        }
 
         if (other.gameObject.CompareTag("Player"))
         {
             other.gameObject.GetComponent<PlayerHealth>().TakeDamage(damageGiven);
 
-            if(other.transform.position.x > transform.position.x)
+            if (other.transform.position.x > transform.position.x)
             {
                 other.gameObject.GetComponent<PlayerMovement>().TakeKnockback(knockbackForce, upwardForce);
             }

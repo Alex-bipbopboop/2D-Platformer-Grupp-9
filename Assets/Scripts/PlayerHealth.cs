@@ -46,7 +46,6 @@ public class PlayerHealth : MonoBehaviour
         transform.position = spawnPosition.position;
         GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
         audioSource.PlayOneShot(deathSoundEffect);
-        print("didRespawn true");
         didRespawn = true;
 
     }
