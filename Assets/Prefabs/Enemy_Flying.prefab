@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8644267326556026602}
-  - component: {fileID: -6735959222816509525}
   - component: {fileID: 713343750595520662}
+  - component: {fileID: -6735959222816509525}
   - component: {fileID: 6598517751735749905}
   - component: {fileID: 5497057229942054384}
   - component: {fileID: 1026583190943817079}
@@ -38,27 +38,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-6735959222816509525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6060265104595920139}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17315942edd1e5344a5231524742774a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovementFlying
-  moveSpeed: 1
-  bounciness: 100
-  damageGiven: 1
-  enemyPoof: {fileID: 6026885795544260463, guid: 74a779fcf7d43d1489275e27e56033eb, type: 3}
-  waypoint: {fileID: 0}
-  distanceToAttack: 3
-  knockbackForce: 0
-  upwardForce: 0
-  playerHealth: {fileID: 0}
 --- !u!212 &713343750595520662
 SpriteRenderer:
   serializedVersion: 3
@@ -108,7 +87,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 4366180577622465177, guid: b58f356b69ea58b43bcd1ee05755710c, type: 3}
+  m_Sprite: {fileID: -3347984106645726015, guid: 6c716c451459e38418567b8573fe25dc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -119,6 +98,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &-6735959222816509525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6060265104595920139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17315942edd1e5344a5231524742774a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovementFlying
+  moveSpeed: 2
+  bounciness: 300
+  damageGiven: 1
+  enemyPoof: {fileID: 6026885795544260463, guid: c0898cfb253dcb946b8d39115f111d51, type: 3}
+  distanceToAttack: 5
+  spawnPosition: {x: 0, y: 0}
+  knockbackForce: 400
+  upwardForce: 180
+  playerHealth: {fileID: 0}
 --- !u!95 &6598517751735749905
 Animator:
   serializedVersion: 7
@@ -129,7 +129,7 @@ Animator:
   m_GameObject: {fileID: 6060265104595920139}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b7117d55e967b3441880f1354628968d, type: 2}
+  m_Controller: {fileID: 9100000, guid: 22373aa403e4377448f29833f6f771a6, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -202,17 +202,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.10077953, y: 0.36008215}
+  m_Offset: {x: -0.06202984, y: 0.034585}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 1.5, y: 0.96875}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 1.5, y: 0.96875}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.1909466, y: 0.7201643}
+  m_Size: {x: 0.7724514, y: 0.7201643}
   m_EdgeRadius: 0
 --- !u!61 &1988977605420504518
 BoxCollider2D:
@@ -248,17 +248,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.1, y: 0.75}
+  m_Offset: {x: -0.048333645, y: 0.40900278}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 1.5, y: 0.96875}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 1.5, y: 0.96875}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.18, y: 0.1}
+  m_Size: {x: 0.58067036, y: 0.027667046}
   m_EdgeRadius: 0
 --- !u!82 &6042429353944364196
 AudioSource:
@@ -271,7 +271,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 229398c0987b67c42a81affaf63c67f3, type: 3}
+  m_Resource: {fileID: 8300000, guid: 23339c2f09290934da664f9a46329d24, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.08
   m_Pitch: 1
