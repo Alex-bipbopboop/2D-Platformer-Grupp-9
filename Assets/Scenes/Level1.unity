@@ -13345,6 +13345,7 @@ MonoBehaviour:
   moveSpeed: 5
   walkSoundTimerTime: 0.4
   jumpForce: 450
+  doubleJumpForce: 400
   leftFoot: {fileID: 1285940477}
   rightFoot: {fileID: 1739064647}
   whatIsGround:

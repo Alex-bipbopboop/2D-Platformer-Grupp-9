@@ -1,4 +1,5 @@
 using System.Collections;
+using Mono.Cecil.Cil;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.InputSystem;
@@ -12,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float moveSpeed = 1f;
     [SerializeField] private float walkSoundTimerTime = 0.4f;
     [SerializeField] private float jumpForce = 200f;
+    [SerializeField] private float doubleJumpForce = 100f; // dubelejump
     [SerializeField] private Transform leftFoot, rightFoot;
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private float raycastDistance = 0.25f;
@@ -30,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
     private float playerPositionX;
     private float newPlayerPositionX;
     private float currentAccel;
-
+    private bool canDoubleJump = false;
     private AudioSource audioSource;
     private Rigidbody2D rgbd;
     private SpriteRenderer rend;
@@ -59,7 +61,18 @@ public class PlayerMovement : MonoBehaviour
 
         anim.SetFloat("MoveSpeed", Mathf.Abs(rgbd.linearVelocity.x));
         anim.SetFloat("VerticalSpeed", rgbd.linearVelocity.y);
-        anim.SetBool("IsGrounded", CheckIsGrounded());
+        // anim.SetBool("IsGrounded", CheckIsGrounded());
+
+
+        bool isGrounded = CheckIsGrounded();
+
+        anim.SetBool("IsGrounded", isGrounded);
+
+        if (isGrounded)
+        {
+            canDoubleJump = true;
+        }
+
 
         if (moveDirection < 0f)
         {
@@ -123,6 +136,19 @@ public class PlayerMovement : MonoBehaviour
         if (CheckIsGrounded() == true || CheckIsOnIce() == true)
         {
             rgbd.AddForce(new Vector2(0, jumpForce));
+            jumpParticleSystem.Play();
+            int randomJumpSound = Random.Range(0, jumpSounds.Length);
+            audioSource.PlayOneShot(jumpSounds[randomJumpSound]);
+
+            canDoubleJump = true; // dubbeljump
+        }
+        else if (canDoubleJump)
+        {
+            rgbd.linearVelocity = new Vector2(rgbd.linearVelocity.x, 0f);
+            rgbd.AddForce(new Vector2(0, doubleJumpForce));
+
+            canDoubleJump = false;
+
             jumpParticleSystem.Play();
             int randomJumpSound = Random.Range(0, jumpSounds.Length);
             audioSource.PlayOneShot(jumpSounds[randomJumpSound]);
