@@ -214,6 +214,7 @@ MonoBehaviour:
   moveSpeed: 5
   walkSoundTimerTime: 0.45
   jumpForce: 450
+  doubleJumpForce: 400
   leftFoot: {fileID: 235079344739126890}
   rightFoot: {fileID: 6802655453641502959}
   whatIsGround:
@@ -232,6 +233,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9c2c17f3f559995469e8b960bcb94de0, type: 3}
   walkSound: {fileID: 8300000, guid: 0b9996cc635af16499bf83de33b8fe8a, type: 3}
   jumpParticleSystem: {fileID: 2013111039326707489}
+  playerPositionUpdateTimer: 0
+  lastPLayerPosition: {fileID: 0}
+  newPlayerPosition: {fileID: 0}
 --- !u!114 &6377260096850471975
 MonoBehaviour:
   m_ObjectHideFlags: 0
