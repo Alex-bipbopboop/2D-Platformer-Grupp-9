@@ -9,6 +9,7 @@ TagManager:
   - EnemyNest
   - EnemyMoveToPosition
   - EnemyFlying
+  - Pickup
   layers:
   - Default
   - TransparentFX
