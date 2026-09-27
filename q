@@ -1,0 +1,65 @@
+[33mcommit 4c57a60490690ecca7011c5300cb9afcdad1af27[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: 7h4lia <7h4lia@gmail.com>
+Date:   Sat Sep 26 20:49:44 2026 +0200
+
+    DUBBELJUMP =P
+
+[33mcommit f8b88fa626bd4a9ace28e87cc936665902902571[m
+Author: 7h4lia <7h4lia@gmail.com>
+Date:   Thu Sep 17 17:31:35 2026 +0200
+
+    inga ändrigar, får ni chekpoints av denhär pushen?
+
+[33mcommit 70503d4d954bbfa6279e31ccb25a4a6f2f3d4391[m
+Merge: 1a27fbc 13d6a19
+Author: 7h4lia <7h4lia@gmail.com>
+Date:   Thu Sep 17 17:23:02 2026 +0200
+
+    Merge branch 'main' of https://github.com/Alex-bipbopboop/2D-Platformer-Grupp-9
+
+[33mcommit 13d6a19e85fb12f38738a151c1acef31a21b00c2[m
+Author: Alex-bipbopboop <alex.vink98@gmail.com>
+Date:   Thu Sep 17 03:36:40 2026 +0200
+
+    Movement physics change + Ice
+    
+    Changed the way force is applied to the player when they move left and right. Added an Ice Tilemap. Implemented different rate of acceleration on ground/ice. Added Ice to What Is Ground for animations. Enabled jumping on ice.
+    
+    Airborn physics remain unchanged leading to jumping on ice being way easier than walking on ice.
+
+[33mcommit 1a27fbcba2e773fd737cf24b410b3a11bdeebfbd[m
+Author: 7h4lia <7h4lia@gmail.com>
+Date:   Tue Sep 15 19:01:49 2026 +0200
+
+    Checkpoint!
+
+[33mcommit f18df54cf0e9351836a9b9997706e3e12bcceef7[m
+Merge: 6249997 44795a3
+Author: William Hall Nanberg <117825883+MrPurpL@users.noreply.github.com>
+Date:   Tue Sep 15 17:19:24 2026 +0200
+
+    Merge pull request #2 from Alex-bipbopboop/William-Branch
+    
+    Enemy poof on death + change hitbox for destroy
+
+[33mcommit 44795a386f30b1c447a317dfafb342a0827cdeca[m
+Author: William Hall Nanberg <117825883+MrPurpL@users.noreply.github.com>
+Date:   Tue Sep 15 17:17:38 2026 +0200
+
+    Enemy poof on death + change hitbox for destroy
+    
+    Fixed sound + particles on enemy defeat and remade the hitbox for player jump on enemy
+
+[33mcommit 6249997305d0c7d0d2f2244bd9c3805c4d13d890[m
+Author: William Hall Nanberg <117825883+MrPurpL@users.noreply.github.com>
+Date:   Mon Sep 14 21:56:45 2026 +0200
+
+    Initial file upload
+    
+    First files
+
+[33mcommit fab784d5334480aa9f2b7f1de0e29426c6e9fa17[m
+Author: Alex-bipbopboop <alex.vink98@gmail.com>
+Date:   Mon Sep 14 20:20:48 2026 +0200
+
+    Initial commit

@@ -82,7 +82,7 @@ public class PlayerHealth : MonoBehaviour
         return true;
     }
 
-    // test 
+    // spawn
     public void SetSpawnPosition (Transform newSpawnPosition)
     {
         spawnPosition = newSpawnPosition;
