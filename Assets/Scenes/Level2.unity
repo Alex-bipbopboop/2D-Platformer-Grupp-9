@@ -910,7 +910,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MovingPlatform
   target1: {fileID: 1221951199}
   target2: {fileID: 1254657625}
-  moveSpeed: 2.5
+  moveSpeed: 5
 --- !u!61 &50071325
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10883,6 +10883,7 @@ Transform:
   - {fileID: 1614099647}
   - {fileID: 1387278245}
   - {fileID: 1990045536}
+  - {fileID: 1136892692}
   - {fileID: 1936967384}
   - {fileID: 889255659}
   - {fileID: 66387888}
@@ -36333,6 +36334,68 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!1001 &1136892691
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 375646628}
+    m_Modifications:
+    - target: {fileID: 3980488667235985856, guid: 16297be3141fdd349bcd3ef3c808e5f1, type: 3}
+      propertyPath: m_Name
+      value: Strawberry (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449287092795902273, guid: 16297be3141fdd349bcd3ef3c808e5f1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 41.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449287092795902273, guid: 16297be3141fdd349bcd3ef3c808e5f1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 15.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449287092795902273, guid: 16297be3141fdd349bcd3ef3c808e5f1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449287092795902273, guid: 16297be3141fdd349bcd3ef3c808e5f1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449287092795902273, guid: 16297be3141fdd349bcd3ef3c808e5f1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449287092795902273, guid: 16297be3141fdd349bcd3ef3c808e5f1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449287092795902273, guid: 16297be3141fdd349bcd3ef3c808e5f1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449287092795902273, guid: 16297be3141fdd349bcd3ef3c808e5f1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449287092795902273, guid: 16297be3141fdd349bcd3ef3c808e5f1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449287092795902273, guid: 16297be3141fdd349bcd3ef3c808e5f1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 16297be3141fdd349bcd3ef3c808e5f1, type: 3}
+--- !u!4 &1136892692 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7449287092795902273, guid: 16297be3141fdd349bcd3ef3c808e5f1, type: 3}
+  m_PrefabInstance: {fileID: 1136892691}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1137040603
 GameObject:
   m_ObjectHideFlags: 0
@@ -143679,7 +143742,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 79da9f949f24d77458ec11549740b99a, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
