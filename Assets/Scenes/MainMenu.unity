@@ -1081,7 +1081,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "A game made by: \n\nWilliam Hall Nanberg\nAlex Vink\n\nSprite Assets from:\n\nPixel Adventure\nBy: Pixel Frog\n\nSlime Mob Pack\nBy: FantasyBytestEntertainment\n\nForest Lite Pixel Art Tileset\nBy: sanctumpixel\n\nPixel Art Semi-Realistic Clouds\nBy: SrBlackRaven\n\nFlying Slime\nBy: Brewpanda\n\nSnow Trees\nBy: Karsiori\n\nPixel Art Snowflakes\nBy: Stone Castle Lab\n\nFont Assets From:\n\nPress Start 2P\nBy: Codeman38\n\n\nSound Assets From:\n\nLoading Screen Loop\nBy: Brandon Morris\n\nCrystal Cave\nBy: cynicmusic\n\nHappy Adventure (Loop)\nBy: TinyWorlds\n\n009 Sound System Dreamscape\nBy: Trance\n\njfxr (Sound Generator)"
+  m_text: "A game made by: \n\nWilliam Hall Nanberg\nAlex Vink\nThalia Sundberg\n\nSprite Assets from:\n\nPixel Adventure\nBy: Pixel Frog\n\nSlime Mob Pack\nBy: FantasyBytestEntertainment\n\nForest Lite Pixel Art Tileset\nBy: sanctumpixel\n\nPixel Art Semi-Realistic Clouds\nBy: SrBlackRaven\n\nFlying Slime\nBy: Brewpanda\n\nSnow Trees\nBy: Karsiori\n\nPixel Art Snowflakes\nBy: Stone Castle Lab\n\nFont Assets From:\n\nPress Start 2P\nBy: Codeman38\n\n\nSound Assets From:\n\nLoading Screen Loop\nBy: Brandon Morris\n\nCrystal Cave\nBy: cynicmusic\n\nHappy Adventure (Loop)\nBy: TinyWorlds\n\n009 Sound System Dreamscape\nBy: Trance\n\njfxr (Sound Generator)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 99bfbe92491dddf46868d5bd1ee70eb9, type: 2}
   m_sharedMaterial: {fileID: -6006410283848958238, guid: 99bfbe92491dddf46868d5bd1ee70eb9, type: 2}
